@@ -1,0 +1,12 @@
+Autor: Yago Fernandez Rego
+practica que permite parsear un archivo XML
+
+Funcionamiento:
+
+Desarrollo:
+
+Peculiaridades: 
+de todas las reglas de xml, el codigo comprueba lo siguiente
+- que exista una tag de cierre para cada tag de apertura
+- que exista una cabecera tal que "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+
