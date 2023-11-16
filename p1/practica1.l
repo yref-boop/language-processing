@@ -15,7 +15,9 @@ word [^ \t\n"."]+
 {word} {wordcount++; charcount += yyleng;}
 {word}"." {sentencecount++; wordcount++; charcount += yyleng;}
 
-"." {charcount++;}
+"." {charcount ++;}
+\n {charcount++;}
+
 %%
 int main()
 {

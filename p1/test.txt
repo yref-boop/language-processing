@@ -1,0 +1,4 @@
+esto ES un TEST de la practica 1.
+
+el numero total de frases deberian ser 3...
+5 numeros, 134 caracteres, 2 palabras mayusculas y 16, ESTA-2ki?-NO, minusculas.

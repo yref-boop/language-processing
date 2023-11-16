@@ -1,7 +1,16 @@
-Autor: Yago Fernández Rego
+Autor: Yago Fernandez Rego
+practica que permite el analisis estadistico de textos
+
+Funcionamiento: en el codigo se plantea la incializacion de distintas variables, una para cada valor solicitado, que, inicializados a 0, iran aumentando a medida que se cumplan las reglas relacionadas con cada valor
 
 Desarrollo:
+palabras: combinaciones de 1 o mas caracteres que no sean tabs, nuevas lineas, espacios o puntos
+palabras mayusculas: aquellas combinaciones de 1 o mas valores de [A-Z]
+palabras minusculas: aquellas combinaciones de 1 o mas valores de [a-z]
+palabras numericas: aquellas combinaciones de 1 o mas [0-9]
+caracteres: cada caracter valido que aparezca (todos menos tab o espacio en blanco, por lo que se contaren tambien las nuevas lineas y los puntos)
 
-Funcionamiento:
-
-Peculiaridades:
+Peculiaridades: 
+- para contar de manera correcta el numero de frases, se crea una regla extra en cada caso que se asegurara que antes de cada "." exista una palabra valida (así evitando que en casos como puntos suspensivos se cuenten 3 frases
+- el caso de caracteres acentuados no se tiene en cuenta, por lo que se contaran como 2 en vez de uno
+- la puntuacion de una palabra (excluyendo el punto) cuenta como un caracter mas de una palabra valida
