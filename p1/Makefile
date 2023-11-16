@@ -1,23 +1,19 @@
-### PL. Fichero makefile basico
-# FUENTE: nombre fichero fuente con extension .l
-FUENTE = practica1
-# PRUEBA: nombre fichero de prueba
-PRUEBA = proba.txt
-# LIB (libreria flex): lfl (gnu/linux, windows); ll (macos)
+SOURCE = practica1
+TEST = test.txt
 LIB = lfl
 
 all: compile
 
 compile:
-	flex $(FUENTE).l
-	gcc -o $(FUENTE) lex.yy.c -$(LIB)
+	flex $(SOURCE).l
+	gcc -o $(SOURCE) lex.yy.c -$(LIB)
 
 clean:
-	rm $(FUENTE) lex.yy.c
+	rm $(SOURCE) lex.yy.c
 
 run:
-	./$(FUENTE) < $(PRUEBA)
+	./$(SOURCE) < $(TEST)
 
 run2:
-	./$(FUENTE)
+	./$(SOURCE)
 

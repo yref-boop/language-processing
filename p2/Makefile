@@ -1,20 +1,19 @@
-FUENTE = practica2
-PRUEBA = test.txt
+SOURCE = practica2
+TEST = proba.txt
 LIB = lfl
 
-all: compile run
+all: compile
 
 compile:
-	flex $(FUENTE).l
-	bison -o $(FUENTE).tab.c $(FUENTE).y -yd
-	gcc -o $(FUENTE) lex.yy.c $(FUENTE).tab.c -$(LIB) -ly
-
-run:
-	./$(FUENTE) < $(PRUEBA)
-
-run2:
-	./$(FUENTE) $(PRUEBA)
+	flex $(SOURCE).l
+	gcc -o $(SOURCE) lex.yy.c -$(LIB)
 
 clean:
-	rm $(FUENTE) lex.yy.c $(FUENTE).tab.c $(FUENTE).tab.h
+	rm $(SOURCE) lex.yy.c
+
+run:
+	./$(SOURCE) < $(TEST)
+
+run2:
+	./$(SOURCE)
 
