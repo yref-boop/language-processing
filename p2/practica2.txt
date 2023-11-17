@@ -2,11 +2,15 @@ Autor: Yago Fernandez Rego
 practica que permite parsear un archivo XML
 
 Funcionamiento:
+de todas las reglas de xml, el codigo comprueba lo siguiente
+- que exista una cabecera tal que "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
+- que exitan tags bajo el header
+- que para cada tag que haya exista una /tag que la cierre
 
 Desarrollo:
+- se declaran en el archivo flex ambos tipos de tags y el prolog, asi como comentarios y caracteres "blancos" como espacios, nuevas lineas o tabs, que son ignorados
+- en el fichero bison se implementan las reglas de la gramatica
 
 Peculiaridades: 
-de todas las reglas de xml, el codigo comprueba lo siguiente
-- que exista una tag de cierre para cada tag de apertura
-- que exista una cabecera tal que "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-
+- el contenido de cada tag (valores) se ignoran, en caso de que sea un tag anidado si se procesa
+- para hacer pruebas con los tests, se debe cambiar la variable del Makefile

@@ -22,14 +22,14 @@ void yyerror (char const *);
 S	: prolog tags {printf("correct XML syntax\n"); exit(0);}
 	| error tags {yyerror("Error: no valid header found\n"); exit(0);};
 
-values	: values tags
-       	| tags;
-
 tags  	: opentag closetag {if(strcmp($1+1, $2+2)!=0) {
 		printf("Error: tag %s not properly closed \n(line: %d)\n", $1, yylineno); exit(2);}}
 	| opentag values values {printf("Error: tag %s not properly closed \n(line: %d)\n", $1, yylineno); exit(2);}
 	| opentag values closetag {if(strcmp($1+1, $3+2)!=0) {
 		printf("Error: tag %s not properly closed \n(line: %d)\n", $1, yylineno); exit(2);}};
+
+values	: values tags
+       	| tags;
 
 %%
 
