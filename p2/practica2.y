@@ -5,29 +5,36 @@
 extern int yylex();
 extern int yylineno;
 void yyerror (char const *);
-}%
+%}
 
 %union{
     char* string;
 }
 
 %token <string> prolog
-%token <string> openingtag
-%token <string> closingtag
-%token <string> comment
-
-%type body content
+%token <string> opentag
+%token <string> closetag
 
 %start S
 
 %%
 
-S : prolog body {printf("correct XML syntax")}
-  | error body {yyerror("no valid header found")}
+S	: prolog tags {printf("correct XML syntax\n"); exit(0);}
+	| error tags {yyerror("Error: no valid header found\n"); exit(0);};
+
+values	: values tags
+       	| tags;
+
+tags  	: opentag closetag {if(strcmp($1+1, $2+2)!=0) {
+		printf("Error: tag %s not properly closed \n(line: %d)\n", $1, yylineno); exit(2);}}
+	| opentag values values {printf("Error: tag %s not properly closed \n(line: %d)\n", $1, yylineno); exit(2);}
+	| opentag values closetag {if(strcmp($1+1, $3+2)!=0) {
+		printf("Error: tag %s not properly closed \n(line: %d)\n", $1, yylineno); exit(2);}};
 
 %%
 
 int main() {
-
+	yyparse();
+	return 0;
 }
-void yyerror (char const *message) {fprintf (stderr, "%s\n", message)}
+
