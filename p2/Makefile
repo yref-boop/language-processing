@@ -1,19 +1,19 @@
 SOURCE = practica2
-TEST = proba.txt
+TEST = test.xml
 LIB = lfl
 
-all: compile
+all: compile run
 
 compile:
 	flex $(SOURCE).l
-	gcc -o $(SOURCE) lex.yy.c -$(LIB)
-
-clean:
-	rm $(SOURCE) lex.yy.c
+	bison -o $(SOURCE).tab.c $(SOURCE).y -yd
+	gcc -o $(SOURCE) lex.yy.c $(SOURCE).tab.c -$(LIB) -ly
 
 run:
 	./$(SOURCE) < $(TEST)
 
 run2:
-	./$(SOURCE)
+	./$(SOURCE) $(TEST)
 
+clean:
+	rm $(SOURCE) lex.yy.c $(SOURCE).tab.c $(SOURCEuu).tab.h
